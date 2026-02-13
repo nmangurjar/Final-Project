@@ -1,0 +1,463 @@
+Test Case ID,Scenario ID,Type,Requirement ID(s),Test Case Title,Preconditions,Test Data,Steps,Expected Result,Priority,Severity,Notes
+TC-001,TS-001,Positive,FR-001,Verify Sports Section Navigation and This Weekend Filter,"User on homepage, Internet connected, Mumbai location set","URL: https://in.bookmyshow.com, Location: Mumbai","1. Open BookMyShow homepage
+2. Verify Sports link is visible in main navigation
+3. Click on Sports link
+4. Wait for Sports page to load
+5. Verify 'This Weekend' filter is visible
+6. Click on 'This Weekend' filter
+7. Wait for events to load","1. Homepage loads successfully
+2. Sports link is clickable
+3. Sports page displays 'Sports In Mumbai' heading
+4. This Weekend filter is present and clickable
+5. Events filtered for upcoming weekend dates
+6. Page displays sports events grid/list",High,High,"This is the primary requirement - ensure weekend dates are Saturday 7 Feb and Sunday 8 Feb 2026"
+TC-002,TS-001,Positive,FR-001,Verify Sports Events Sorted by Lowest Price,"Sports page loaded, This Weekend filter applied, Events displayed","Expected order: ₹125, ₹147, ₹150, ₹250, ₹279, etc.","1. Navigate to Sports section
+2. Apply 'This Weekend' filter
+3. Wait for all events to load
+4. Extract price from first event card
+5. Extract price from second event card
+6. Extract price from third event card
+7. Compare prices in ascending order","1. First event shows lowest price (₹125 onwards)
+2. Second event price >= first event price
+3. Third event price >= second event price
+4. All visible events follow ascending price order
+5. Price format: '₹XXX onwards'",High,High,"Verify Mumbai Midnight Cycling Pedal & Go (₹125) appears first if available"
+TC-003,TS-001,Positive,FR-001,Verify Complete Event Details Display,"Sports page loaded, This Weekend filter applied, At least one event visible","Event: MUMBAI ICC MEN'S T20 WC 2026","1. Navigate to Sports section with This Weekend filter
+2. Locate first event card
+3. Verify event name is displayed
+4. Verify category badge/label is displayed
+5. Verify date and day are displayed
+6. Verify venue name is displayed
+7. Verify price information is displayed
+8. Verify event image/poster is displayed","1. Event name visible (e.g., 'MUMBAI ICC MEN'S T20 WC 2026')
+2. Category visible (e.g., 'Cricket')
+3. Date visible (e.g., 'Saturday, 7 Feb')
+4. Venue visible (e.g., 'Wankhede Stadium')
+5. Price visible (e.g., '₹150 onwards')
+6. Event poster image is loaded
+7. All text is readable",Medium,Medium,"Test with multiple events to ensure consistency"
+TC-004,TS-001,Positive,FR-001,Verify Sports Category Cricket Filtering,"Sports page loaded, Category filters visible","Category: Cricket","1. Navigate to Sports section
+2. Locate category filter sidebar
+3. Click on 'Cricket' category filter
+4. Wait for filtered results
+5. Verify each displayed event
+6. Check category badge on event cards","1. Cricket filter is clickable
+2. Page refreshes/updates with filtered results
+3. All displayed events belong to Cricket category
+4. Event cards show 'Cricket' badge
+5. Non-cricket events are hidden
+6. URL may update with category parameter",Medium,Low,"Categories available: Cricket, Running, Cycling, Sailing, Kabaddi, Horse Race, Boat Race, Archery, Tennis"
+TC-005,TS-001,Positive,FR-001,Verify Date Filter Options in Sports Section,"Sports page loaded, Date filter bar visible","Date options: Today, Tomorrow, This Weekend, Date Range","1. Navigate to Sports section
+2. Locate date filter bar
+3. Verify 'Today' filter is present
+4. Verify 'Tomorrow' filter is present
+5. Verify 'This Weekend' filter is present
+6. Verify 'Date Range' or custom date option is present
+7. Click on each filter option
+8. Verify events update for each filter","1. Sports page loads successfully
+2. Date filter bar is visible below page heading
+3. All date filter options are displayed
+4. Each filter is clickable
+5. Clicking 'Today' shows today's sports events
+6. Clicking 'Tomorrow' shows tomorrow's events
+7. Clicking 'This Weekend' shows weekend events
+8. Date Range opens date picker (if available)
+9. Events update based on selected date filter",Medium,Medium,"This Weekend filter is primary requirement for FR-001"
+TC-006,TS-002,Positive,FR-002,Verify Movie Language Filters Display,"Homepage loaded, Mumbai location set","Language list: Hindi, English, Marathi, Japanese, Malayalam, Korean, Gujarati, Telugu, Multi Language, Sindhi, Tamil","1. Open BookMyShow homepage
+2. Click on Movies link in navigation
+3. Wait for Movies page to load
+4. Locate left sidebar filter section
+5. Verify 'Languages' heading is visible
+6. Count number of language options displayed
+7. Verify each expected language is present
+8. Verify 'Clear' button is present","1. Movies page loads successfully
+2. Page heading shows 'Movies In Mumbai'
+3. Language filter section is visible in left sidebar
+4. Minimum 11 language options are displayed
+5. All expected languages are present: Hindi, English, Marathi, Japanese, Malayalam, Korean, Gujarati, Telugu, Multi Language, Sindhi, Tamil
+6. Each language has checkbox for selection
+7. Clear button is functional",High,High,"Core requirement for FR-002"
+TC-007,TS-002,Positive,FR-002,Verify Movie Languages Extraction to Java List,"Movies page loaded, Language filters visible, WebDriver initialized","ArrayList<String> movieLanguages = new ArrayList<>();","1. Navigate to Movies section
+2. Locate language filter section by XPath/CSS
+3. Find all language checkbox elements
+4. Loop through each language element
+5. Extract text using getText() method
+6. Add each language to ArrayList
+7. Print list size
+8. Print list contents
+9. Verify list contains expected languages","1. Language elements located successfully
+2. getText() returns language names correctly
+3. ArrayList populated with all languages
+4. List size >= 11
+5. List contains: [Hindi, English, Marathi, Japanese, Malayalam, Korean, Gujarati, Telugu, Multi Language, Sindhi, Tamil]
+6. No null or empty values in list
+7. List can be iterated successfully",High,Critical,"Implementation code:
+List<String> languages = new ArrayList<>();
+List<WebElement> langElements = driver.findElements(By.xpath(""//language-locator""));
+for(WebElement lang : langElements) {
+  languages.add(lang.getText());
+}"
+TC-008,TS-002,Positive,FR-002,Verify Minimum Language Count Validation,"Movies page loaded, Language filters displayed","Expected count: >= 11","1. Navigate to Movies section
+2. Locate language filter container
+3. Use findElements() to get all language options
+4. Store elements in List<WebElement>
+5. Get size of the list
+6. Assert list size >= 11
+7. Log the actual count","1. Language filter elements are located
+2. findElements returns non-empty list
+3. List size is >= 11
+4. Assertion passes
+5. Test continues without failure
+6. Actual count logged for reference",Medium,Medium,"Use soft assertion to continue test even if count is different"
+TC-009,TS-002,Positive,FR-002,Verify Movie Language Filter Functionality,"Movies page loaded, Language filters available","Language: Hindi","1. Navigate to Movies section
+2. Verify initial movie count
+3. Locate Hindi language checkbox
+4. Click on Hindi checkbox
+5. Wait for page to update (2-3 seconds)
+6. Verify filter is applied (checkbox checked)
+7. Verify movies displayed are in Hindi
+8. Verify movie cards show 'Hindi' language tag","1. Hindi checkbox is clickable
+2. Checkbox state changes to checked
+3. Page updates with filtered results
+4. Only Hindi language movies are displayed
+5. Movie cards show 'Hindi' in language section
+6. URL may update with language parameter
+7. Movie count reduces to Hindi-only movies
+8. Clear filter button becomes active",Medium,Low,"Some movies may be multi-language - verify 'Hindi' is included in language list"
+TC-010,TS-002,Positive,FR-002,Verify Navigation to Movies Section,"Homepage loaded, Internet connected","URL: https://in.bookmyshow.com","1. Open BookMyShow homepage
+2. Wait for full page load
+3. Verify Movies link in navigation
+4. Click on Movies link
+5. Wait for Movies page to load
+6. Verify URL changes
+7. Verify page heading
+8. Verify language filters are visible","1. Homepage loads successfully
+2. Movies link is visible and clickable
+3. Navigation completes within 3 seconds
+4. URL becomes: https://in.bookmyshow.com/explore/movies-mumbai
+5. Page heading: 'Movies In Mumbai'
+6. Language filter sidebar is displayed
+7. Movie cards/grid is visible
+8. Filters section includes Languages, Genres, Format",High,High,"Movies is primary navigation item"
+TC-011,TS-003,Positive,FR-003,Verify Sign In Button Visibility and Location,"Homepage loaded, User not logged in","N/A","1. Open BookMyShow homepage
+2. Wait for header to load
+3. Locate top-right section of header
+4. Verify 'Sign in' button is present
+5. Verify button text is 'Sign in'
+6. Verify button is enabled
+7. Verify button styling/CSS","1. Header loads completely
+2. Sign in button is visible in top-right area
+3. Button text displays 'Sign in'
+4. Button is clickable (enabled state)
+5. Button has proper styling (color, font, border)
+6. Button is within header navigation
+7. Button maintains position on scroll",High,Medium,"Button should be accessible from all pages, not just homepage"
+TC-012,TS-003,Positive,FR-003,Verify Sign In Button Click Action,"Homepage loaded, Sign in button visible","N/A","1. Navigate to homepage
+2. Locate Sign in button
+3. Click on Sign in button
+4. Wait for modal/popup (up to 5 seconds)
+5. Verify modal overlay appears
+6. Verify authentication options are displayed
+7. Verify modal can be closed","1. Sign in button click is successful
+2. Modal/popup opens within 3 seconds
+3. Background is dimmed (overlay present)
+4. Authentication dialog is centered
+5. Modal contains sign-in options
+6. Close button (X) is present
+7. ESC key or close button closes modal",High,Critical,"Known Issue (Feb 6, 2026): API error modal may appear instead of sign-in modal"
+TC-013,TS-003,Positive,FR-003,Verify Google Sign-In Option in Authentication Modal,"Sign-in modal opened successfully, Authentication options loaded","Button text variations: 'Continue with Google', 'Sign in with Google', 'Google'","1. Open Sign in modal
+2. Wait for modal content to load
+3. Locate Google sign-in option
+4. Verify button/link text contains 'Google'
+5. Verify Google logo/icon is present
+6. Verify button is clickable
+7. Verify button positioning in modal","1. Modal opens successfully
+2. Google sign-in option is visible
+3. Button text clearly indicates Google sign-in
+4. Google logo/branding is present
+5. Button is in enabled state
+6. Button has proper styling
+7. Other sign-in options may be present (Email, Apple)",High,Critical,"This test may be blocked if modal doesn't open due to known issue"
+TC-014,TS-003,Negative,FR-003,Verify Error Message for Invalid Google Credentials,"Sign-in modal opened, Google sign-in option available","Invalid Email: invalid@test.com, Invalid Password: wrongpass123","1. Open Sign in modal
+2. Click on 'Continue with Google' button
+3. Wait for Google authentication page
+4. Enter invalid email address
+5. Enter invalid password
+6. Click Sign in/Next button
+7. Wait for error message
+8. Capture error message text
+9. Take screenshot
+10. Verify error message content","1. Google sign-in redirects to Google auth page
+2. Email field accepts input
+3. Password field accepts input
+4. Credentials are submitted
+5. Error message appears within 3 seconds
+6. Error message is user-friendly
+7. Message indicates invalid credentials
+8. User remains unauthenticated
+9. Option to retry is available
+10. Session remains logged out",Critical,Critical,"Expected error: 'Couldn't find your Google Account' or 'Wrong password. Try again or click Forgot password to reset it.'
+Note: Full OAuth testing may not be possible in automation"
+TC-015,TS-003,Negative,FR-003,Verify Error Message Capture and Validation,"Sign-in attempt failed, Error message displayed","Expected error text patterns","1. Trigger sign-in failure scenario
+2. Wait for error message to appear
+3. Locate error message element
+4. Extract error text using getText()
+5. Store error text in String variable
+6. Verify error text is not empty
+7. Verify error text length > 10 characters
+8. Log error message
+9. Assert error contains expected keywords
+10. Take screenshot for evidence","1. Error message element located successfully
+2. getText() returns non-empty string
+3. Error message contains meaningful text
+4. Error message captured: 'Sorry for bug-ging - Some issue from our side. Kindly refresh the page for more entertainment.'
+5. Message logged to console/report
+6. Screenshot saved with timestamp
+7. Assertion validates expected keywords
+8. Test marked as failed/blocked with proper message",High,High,"Known error (Feb 6, 2026) - API failure instead of sign-in modal. Capture this as defect."
+TC-016,TS-003,Positive,FR-003,Verify Sign In Modal Close Functionality,"Sign-in modal is open, Close button visible","N/A","1. Open Sign in modal
+2. Locate close button (X icon)
+3. Verify close button is clickable
+4. Click close button
+5. Verify modal closes
+6. Alternative: Press ESC key
+7. Verify modal closes
+8. Verify user remains on same page","1. Close button (X) is visible in modal
+2. Close button is clickable
+3. Clicking close button dismisses modal
+4. Modal overlay disappears
+5. Background page is interactive again
+6. ESC key also closes modal
+7. User remains logged out
+8. No error occurs on close
+9. Page state is unchanged",Low,Low,"Test both close button click and ESC key"
+TC-017,TS-004,Positive,FR-001/FR-002/FR-003,Verify All Main Navigation Elements Present,"Homepage loaded, Page rendered completely","Expected menu items: Movies, Stream, Events, Plays, Sports, Activities, ListYourShow, Corporates, Offers, Gift Cards","1. Open BookMyShow homepage
+2. Wait for header to load
+3. Locate navigation bar
+4. Verify 'Movies' link is present
+5. Verify 'Stream' link is present
+6. Verify 'Events' link is present
+7. Verify 'Plays' link is present
+8. Verify 'Sports' link is present
+9. Verify 'Activities' link is present
+10. Verify 'ListYourShow' link is present
+11. Verify 'Corporates' link is present
+12. Verify 'Offers' link is present
+13. Verify 'Gift Cards' link is present","1. Homepage loads successfully
+2. Navigation bar is visible
+3. All 10 menu items are present
+4. Each link has correct text
+5. Each link is clickable
+6. Links are in horizontal layout
+7. Navigation is sticky/fixed on scroll
+8. All links have proper styling
+9. Hover effect works on each link",High,Medium,"This is foundational test for all navigation scenarios"
+TC-018,TS-004,Positive,FR-001/FR-002,Verify Mumbai Location Selection and Display,"Homepage loaded, Location selector visible","Location: Mumbai","1. Open BookMyShow homepage
+2. Locate location selector/dropdown
+3. Verify current location displays 'Mumbai'
+4. Click on location selector (if changeable)
+5. Verify location dropdown opens
+6. Verify Mumbai is in the list
+7. Select Mumbai if not already selected
+8. Verify Mumbai is displayed in selector
+9. Verify page content updates for Mumbai","1. Location selector is visible in header
+2. Current location shows 'Mumbai'
+3. Location is clickable
+4. Dropdown shows city list if opened
+5. Mumbai is available in list
+6. Selecting Mumbai updates page content
+7. URL may include '/mumbai' path
+8. Events/Movies shown are for Mumbai region
+9. Sports events heading shows 'Sports In Mumbai'",Medium,Medium,"Location context is critical for sports and movies filtering"
+TC-019,TS-004,Positive,FR-001/FR-002,Verify Search Box Functionality,"Homepage loaded, Search box visible","Search text: 'Cricket', 'Movies', 'Mardaani 3'","1. Open BookMyShow homepage
+2. Locate search box in header
+3. Verify placeholder text
+4. Click on search box
+5. Verify cursor appears in search field
+6. Enter search text 'Cricket'
+7. Wait for suggestions/results
+8. Verify search results appear
+9. Clear search and test with 'Movies'
+10. Verify movie search results","1. Search box is visible and accessible
+2. Placeholder: 'Search for Movies, Events, Plays, Sports and Activities'
+3. Search box is clickable
+4. Text input is accepted
+5. Suggestions dropdown appears as user types
+6. Relevant results are displayed
+7. Clicking result navigates to detail page
+8. Clear button (X) clears search text
+9. Search works for multiple categories",Low,Low,"Search is supplementary feature but useful for user experience testing"
+TC-020,TS-001,Positive,FR-001,Verify Minimum Sports Events Count for Weekend,"Sports page loaded, This Weekend filter applied","Minimum expected events: 10","1. Navigate to Sports section
+2. Click on This Weekend filter
+3. Wait for events to load completely
+4. Use findElements to get all event cards
+5. Count total event cards
+6. Store count in variable
+7. Assert count >= 10
+8. Log actual event count","1. This Weekend filter is applied successfully
+2. Events grid/list is populated
+3. All event cards are loaded
+4. Event count >= 10
+5. Assertion passes
+6. Event cards are visible and properly formatted
+7. No loading spinner remains
+8. Actual count logged for reference",Medium,Medium,"Event availability depends on actual calendar - adjust expectation if needed"
+TC-021,TS-002,Positive,FR-002,Verify Multiple Language Selection,"Movies page loaded, Language filters available","Languages: Hindi, English","1. Navigate to Movies section
+2. Locate language filter section
+3. Verify no languages are selected initially
+4. Click Hindi checkbox
+5. Verify Hindi is checked
+6. Click English checkbox
+7. Verify English is checked
+8. Verify both checkboxes remain checked
+9. Verify movies update to show Hindi OR English movies
+10. Click Clear to reset filters","1. Language filters loaded successfully
+2. Checkboxes are initially unchecked
+3. Hindi checkbox changes to checked state
+4. English checkbox changes to checked state
+5. Both filters remain active simultaneously
+6. Movie results include both Hindi and English movies
+7. Filter count indicator updates (if present)
+8. Clear button resets all selections
+9. Page shows all movies after clear",Low,Low,"Test the OR logic of multiple filters"
+TC-022,TS-001,Positive,FR-001,Verify Minimum Sports Events Count for Weekend,"Sports page loaded, This Weekend filter applied","Minimum expected events: 10","1. Navigate to Sports section
+2. Click on This Weekend filter
+3. Wait for events to load completely
+4. Use findElements to get all event cards
+5. Count total event cards
+6. Store count in variable
+7. Assert count >= 10
+8. Log actual event count","1. This Weekend filter is applied successfully
+2. Events grid/list is populated
+3. All event cards are loaded
+4. Event count >= 10
+5. Assertion passes
+6. Event cards are visible and properly formatted
+7. No loading spinner remains
+8. Actual count logged for reference",Medium,Medium,"Event availability depends on actual calendar - adjust expectation if needed"
+TC-023,TS-001,Positive,FR-001,Verify Price Format and Currency Display,"Sports page loaded, Events with prices visible","Expected format: ₹XXX onwards","1. Navigate to Sports section
+2. Apply This Weekend filter
+3. Locate first event card
+4. Find price element on card
+5. Extract price text
+6. Verify price starts with ₹ symbol
+7. Verify price contains numeric value
+8. Verify price ends with 'onwards' text
+9. Verify format: ₹[number] onwards
+10. Test with multiple events","1. Price element is present on event card
+2. Price text is extracted successfully
+3. Currency symbol ₹ (Rupee) is present
+4. Price contains valid numeric value
+5. Format matches: ₹XXX onwards
+6. Examples: ₹125 onwards, ₹750 onwards
+7. No formatting errors (missing symbols, incorrect spacing)
+8. Price is readable and properly styled
+9. All events follow same format",Low,Low,"Price format consistency is important for sorting and display"
+TC-024,TS-005,Positive,FR-001/FR-002/FR-003,Verify Footer Links and Sections,"Any page loaded, User scrolls to footer","Footer sections: Help, Events in Top Cities, Cinemas, Plays, Activities, Movies Now Showing, Countries, BookMyShow Exclusives","1. Navigate to any BookMyShow page
+2. Scroll to bottom of page
+3. Verify footer is visible
+4. Locate 'Help' section
+5. Verify Help links: About Us, Contact Us, FAQs, Terms and Conditions, Privacy Policy
+6. Locate 'Events in Top Cities' section
+7. Verify city links: Mumbai, Delhi-NCR, Chennai, Bengaluru, etc.
+8. Locate 'Cinemas in Top Cities' section
+9. Locate 'Countries' section
+10. Verify copyright text: © 2026 Bigtree Entertainment Pvt. Ltd.","1. Footer is visible at page bottom
+2. Footer has proper background and styling
+3. All footer sections are present
+4. Help section contains required links
+5. All links are clickable
+6. City links navigate to respective city pages
+7. Social media icons are present (Facebook, Twitter, Instagram, YouTube, LinkedIn, Pinterest)
+8. Copyright year is 2026
+9. Footer is consistent across all pages
+10. 'List Your Show' section is present",Low,Low,"Footer validation ensures page completeness"
+TC-025,TS-005,Positive,General,Verify Offers and Gift Cards Navigation,"Homepage loaded, Main navigation visible","Menu items: Offers, Gift Cards","1. Open BookMyShow homepage
+2. Locate main navigation bar
+3. Find 'Offers' link
+4. Click on Offers link
+5. Verify Offers page loads
+6. Verify URL contains 'offers'
+7. Navigate back to homepage
+8. Click on 'Gift Cards' link
+9. Verify Gift Cards page loads
+10. Verify URL contains 'giftcards'","1. Homepage loads successfully
+2. Offers link is visible in navigation
+3. Offers link is clickable
+4. Offers page loads: https://in.bookmyshow.com/offers
+5. Offers page displays available offers/promotions
+6. Gift Cards link is visible in navigation
+7. Gift Cards link is clickable
+8. Gift Cards page loads: https://in.bookmyshow.com/giftcards
+9. Gift Cards page displays gift card options
+10. Navigation is smooth without errors",Low,Low,"Supplementary navigation test for additional menu items"
+TC-026,TS-001,Negative,FR-001,Verify Sports Section with No Events Available,"Sports page loaded, Date filter applied for future date","Date: Far future date with no events","1. Navigate to Sports section
+2. Select Date Range filter
+3. Choose a date far in future (e.g., 1 year ahead)
+4. Apply the date filter
+5. Wait for page to update
+6. Verify page behavior
+7. Check for 'No events available' message
+8. Verify empty state is user-friendly","1. Date range filter is functional
+2. Future date can be selected
+3. Filter is applied successfully
+4. Page updates with no events
+5. 'No events available' or similar message displayed
+6. Empty state has proper styling
+7. Message is user-friendly and clear
+8. Option to change filters is available
+9. No errors in console",Medium,Low,"Edge case testing for empty results"
+TC-027,TS-002,Negative,FR-002,Verify Movies Section with All Languages Deselected,"Movies page loaded, Language filters visible, All filters cleared","Action: Clear all language selections","1. Navigate to Movies section
+2. Verify movies are displayed initially
+3. Click Clear button in Languages section
+4. Verify all language checkboxes are unchecked
+5. Check if movies are still displayed
+6. Verify system behavior with no filters","1. Movies page loads with default movies
+2. Clear button is clickable
+3. All language checkboxes are deselected
+4. System shows all movies (default behavior) OR
+5. System shows 'Select a language' message
+6. No errors occur
+7. User can reselect languages
+8. Page remains functional",Medium,Low,"Test default behavior when no filters are selected"
+TC-028,TS-003,Negative,FR-003,Verify Sign In with Empty Credentials,"Sign-in modal opened, Google sign-in flow initiated","Email: (empty), Password: (empty)","1. Open Sign in modal
+2. Click Continue with Google
+3. Wait for Google sign-in page
+4. Leave email field empty
+5. Click Next/Continue
+6. Verify validation error
+7. Verify error message content","1. Google sign-in page loads
+2. Email field is present
+3. Leaving field empty triggers validation
+4. Error message: 'Enter an email or phone number'
+5. Sign-in is blocked
+6. User cannot proceed without email
+7. Validation is client-side (immediate)
+8. Error message is clear and helpful",Medium,Medium,"Validation testing for required fields"
+TC-029,TS-001,Negative,FR-001,Verify Sports Section with Invalid Category Filter,"Sports page loaded, Category filters visible","Invalid action: Rapid clicking, Simultaneous filter selection","1. Navigate to Sports section
+2. Rapidly click multiple category filters
+3. Click Cricket, then Running, then Cycling quickly
+4. Verify system handles rapid clicks
+5. Verify final filter state
+6. Check for errors or unexpected behavior","1. Sports page remains stable
+2. System handles rapid clicks gracefully
+3. Only last clicked filter is applied OR
+4. Multiple filters work as OR condition
+5. No JavaScript errors
+6. Events update correctly
+7. No duplicate events displayed
+8. UI remains responsive",Low,Medium,"Stress testing user interaction edge cases"
+TC-030,TS-002,Negative,FR-002,Verify Movie Language Filter with Invalid Selection State,"Movies page loaded, Language filters available","Invalid state: Check and uncheck same filter rapidly","1. Navigate to Movies section
+2. Click Hindi language checkbox
+3. Immediately uncheck Hindi
+4. Repeat rapidly 5-10 times
+5. Verify final state of checkbox
+6. Verify movies displayed match filter state
+7. Check for any UI glitches","1. Language filter responds to clicks
+2. Checkbox toggles between checked/unchecked
+3. System handles rapid toggling
+4. Final checkbox state is consistent
+5. Movies displayed match final filter state
+6. No visual glitches or flickering
+7. No JavaScript errors in console
+8. Page remains functional and responsive",Low,Low,"UI stability testing for rapid user actions"
