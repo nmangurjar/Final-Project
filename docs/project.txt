@@ -1,18 +1,22 @@
-Project: Display all the sports activities available in your city for coming weekend
+Project: District (by Zomato) automation
 
-Problem Statement : Display all the sports activities available in your city for coming weekend
-1. Name of the sports along with date.
-2. Display the activity with lowest charges on top.
-(Suggested Site: bookmyshow.com)
+Problem Statement: 
+1. Display all the sports activities available in your city for coming weekend,
+2. get all movie languages,
+3. capture login error by entering wrong login details.
 
 Detailed Description:
-1. Find the sports activities in your city for coming weekend, with lowest charges on top; Display the Name of the sports along with date.
-2. Extract all the languages for movies and store in a List; Display the same
-3. Try to 'Sign In' with google, give invalid account details & capture the error message
-(Suggested Site: bookmyshow.com)
+----Activities----
+1. Go to https://www.district.in/ and choose Mumbai location.
+2. Go to Activities and apply filter of "This Weekend" & sort by "Price : Low to High"
+3. Capture details of all activities and store it in suitable data structure in collection framework, And print the one having lowest price.
+----Movies----
+4. Go to movies and then get all languages available in Language Filter.
+----Login----
+5. Click on user profile and enter invalid mobile number and capture error and take screenshot.
 
 Key Automation Scope:
-Handling alerts, windows & frames
+Handling alerts, windows
 Extract menu items from frames & store in collections
 Scrolling down in web page
 Filling simple form, Capture warning message
