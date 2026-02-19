@@ -39,7 +39,7 @@ Subtitle: For the given Project Idea, You are expected to follow below steps:
 * Scenarios: Split the requirements into Test scenarios.
 * Test Cases: Derive minimum 20 Test cases covering both positive and negative scenarios.
 * Suites: Prepare a smoke suite and regression suite.
-* Execution: Execute suites manually, update status in Excel, and generate a Test Summary report.
+* Execution: Execute suites manually, update status in CSV, and generate a Test Summary report.
 Slide 3: Workflow Implementation (Phase 2 - Automation Setup)
 Subtitle: For the given Project Idea, You are expected to follow below steps:
 * Feasibility: Perform automation feasibility (e.g., Selenium's ability to identify application objects).
