@@ -23,21 +23,22 @@ public class Events {
     }
 
     private static void saveEvents(WebDriver driver) {
-        List<WebElement> events = Constants.waitUntil(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(EventComponentLocators.eventAnchor)));
+        List<WebElement> events = Constants.waitUntil(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(EventComponentLocators.eventDiv)));
         for(WebElement event: events) {
+            System.out.println(event.findElement(By.xpath("./parent::a")).getAttribute("href"));
             System.out.println(event.getText());
         }
     }
 
     public static void getEvents(WebDriver driver) {
-        try {
-            // Since DOM elements will be refreshed after Re-rendering and selenium requires sometime to save those changes!
-            Thread.sleep(5_000);
-        } catch(InterruptedException ie) {
-            System.out.println(ie.getMessage());
-        }
+        // Since DOM elements will be refreshed after Re-rendering and selenium requires sometime to save those changes!
+        Constants.waitFor(5);
         Events.selectThisWeekendButton(driver);
+
         Events.applyPriceFilter(driver);
+
+        // Since DOM elements will be refreshed after Re-rendering and selenium requires sometime to save those changes!
+        Constants.waitFor(5);
         Events.saveEvents(driver);
     }
 }

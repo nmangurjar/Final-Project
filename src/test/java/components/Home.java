@@ -19,14 +19,9 @@ public class Home {
         WebDriverWait wait = Constants.waitUntil(driver, 10);
         WebElement selectLocation = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(HomeComponentLocators.selectLocationButton)));
 
-        try {
-            // Since District is setting the location by default so we should wait until it completes-
-            // If not, then our preferred location will be overwritten or it would not be selected at all!
-            Thread.sleep(5_000);
-        } catch(InterruptedException ie) {
-            System.out.println(ie.getMessage());
-        }
-
+        // Since District is setting the location by default so we should wait until it completes-
+        // If not, then our preferred location will be overwritten or it would not be selected at all!
+        Constants.waitFor(5);
         selectLocation.click();
         driver.findElement(By.xpath(HomeComponentLocators.searchBox)).sendKeys(location);
 

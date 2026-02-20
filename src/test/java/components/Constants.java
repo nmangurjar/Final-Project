@@ -11,6 +11,14 @@ public class Constants {
     public static WebDriverWait waitUntil(WebDriver driver, int seconds) {
         return new WebDriverWait(driver, Duration.ofSeconds(seconds));
     }
+
+    public static void waitFor(int seconds) {
+        try {
+            Thread.sleep(seconds * 1000);
+        } catch(InterruptedException ie) {
+            System.out.println(ie.getMessage());
+        }
+    }
 }
 
 class HomeComponentLocators {
@@ -18,7 +26,6 @@ class HomeComponentLocators {
     public static final String searchBox = "//input[@placeholder = 'Search city, area or locality']";
     // The first button tag is the matched result!
     public static final String requiredLocation = "//div[contains(@class, 'dds-no-scrollbar')]/div/button";
-    public static final String moviesComponent = "//a[@href = '/movies/']";
 }
 
 class EventComponentLocators {
@@ -29,7 +36,7 @@ class EventComponentLocators {
     public static final String filterLabel = "//label[@for = 'event_price_sort_Price : Low to High']";
     public static final String applyFilters = "//button[@aria-label = 'Apply Filters']";
 
-    public static final String eventAnchor = "//div[contains(@class,'dds-grid')]/a";
+    public static final String eventDiv = "//div[contains(@class,'dds-grid')]//div[contains(@class,'dds-w-full') and contains(@class,'dds-h-full') and contains(@class,'item-cards')]";
 }
 
 class MovieComponentLocators {

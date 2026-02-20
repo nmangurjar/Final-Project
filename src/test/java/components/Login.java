@@ -18,7 +18,7 @@ public class Login {
 
         try {
             File sourceFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            String destinationPath = "./Images/Invalid_Login_Attempt.png";
+            String destinationPath = "Images/Invalid_Login_Attempt.png";
             File destinationFile = new File(destinationPath);
             FileUtils.copyFile(sourceFile, destinationFile);
             System.out.println("Screenshot saved to: " + destinationFile.getAbsolutePath());

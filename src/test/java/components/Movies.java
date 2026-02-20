@@ -13,11 +13,7 @@ public class Movies {
     public static void getAvailableLanguages(WebDriver driver) {
         driver.findElement(By.xpath(MovieComponentLocators.moviesComponent)).click();
         // Since DOM elements will be refreshed after Re-rendering and selenium requires sometime to save those changes!
-        try {
-            Thread.sleep(5_000);
-        } catch(InterruptedException ie) {
-            System.out.println(ie.getMessage());
-        }
+        Constants.waitFor(5);
 
         WebElement filterSection = Constants.waitUntil(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(MovieComponentLocators.filterSection)));
 
