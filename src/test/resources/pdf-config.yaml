@@ -1,0 +1,6 @@
+# Extent PDF Configuration (optional)
+# Only used if extent.reporter.pdf.start=true in extent.properties
+
+document.creator=QE&A Automation Team
+document.name=District BDD Automation Report
+document.title=District by Zomato – Selenium BDD Test Report
