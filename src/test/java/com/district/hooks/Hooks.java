@@ -25,7 +25,7 @@ public class Hooks {
     @Before(order = 0)
     public void setUp(Scenario scenario) {
         System.out.println("\n─────────────────────────────────────────────");
-        System.out.println("▶ Starting Scenario: " + scenario.getName());
+        System.out.println("  Starting Scenario: " + scenario.getName());
         System.out.println("  Tags: " + scenario.getSourceTagNames());
         System.out.println("─────────────────────────────────────────────");
         DriverManager.initDriver();
@@ -39,19 +39,19 @@ public class Hooks {
     @After(order = 0)
     public void tearDown(Scenario scenario) {
         System.out.println("\n─────────────────────────────────────────────");
-        System.out.println("◼ Finished Scenario: " + scenario.getName());
+        System.out.println("  Finished Scenario: " + scenario.getName());
         System.out.println("  Status: " + scenario.getStatus());
 
         try {
             WebDriver driver = DriverManager.getDriver();
 
             if (scenario.isFailed()) {
-                System.out.println("  ❌ FAILED – capturing screenshot ...");
+                System.out.println("   FAILED – capturing screenshot ...");
 
                 // 1. Save to disk
                 String screenshotPath = ScreenshotUtil.takeScreenshot(
                         driver, "FAILED_" + scenario.getName());
-                System.out.println("  Screenshot saved: " + screenshotPath);
+                System.out.println("  Screenshot saved at: " + screenshotPath);
 
                 // 2. Embed into Cucumber / Extent report
                 byte[] screenshotBytes = ScreenshotUtil.takeScreenshotAsBytes(driver);
