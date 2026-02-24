@@ -1,0 +1,84 @@
+Project: District (by Zomato) automation
+
+Problem Statement: 
+1. Display all the sports activities available in your city for coming weekend,
+2. get all movie languages,
+3. capture login error by entering wrong login details.
+
+Detailed Description:
+----Activities----
+1. Go to https://www.district.in/ and choose Mumbai location.
+2. Go to Activities and apply filter of "This Weekend" & sort by "Price : Low to High"
+3. Capture details of all activities and store it in suitable data structure in collection framework, And print the one having lowest price.
+----Movies----
+4. Go to movies and then get all languages available in Language Filter.
+----Login----
+5. Click on user profile and enter invalid mobile number and capture error and take screenshot.
+
+Key Automation Scope:
+Handling alerts, windows
+Extract menu items from frames & store in collections
+Scrolling down in web page
+Filling simple form, Capture warning message
+Navigation from Menus
+Navigating back to home page
+
+
+Project Guideline Document
+Slide 1: Title Slide
+* Organization: Cognizant Academy
+* Main Title: Project Guideline Document
+* Footer: © 2020 Cognizant
+Slide 2: Workflow Implementation (Phase 1)
+Subtitle: For the given Project Idea, You are expected to follow below steps:
+* Understand the given Project requirement/module.
+* Identify plug-ins / IDE / browsers to be used for the project.
+* Guideline Document: Create a document detailing coding standards, naming conventions, code comment standards, indentation guidelines, etc.
+* Suggestions: Include recommendations on "adding/modifying" the problem statement.
+* Requirements: Derive a functionality requirement document for the problem statement.
+* Scenarios: Split the requirements into Test scenarios.
+* Test Cases: Derive minimum 20 Test cases covering both positive and negative scenarios.
+* Suites: Prepare a smoke suite and regression suite.
+* Execution: Execute suites manually, update status in Excel, and generate a Test Summary report.
+Slide 3: Workflow Implementation (Phase 2 - Automation Setup)
+Subtitle: For the given Project Idea, You are expected to follow below steps:
+* Feasibility: Perform automation feasibility (e.g., Selenium's ability to identify application objects).
+* Reusable Functions: Create Module (Functionality) wise specific reusable functions.
+* Framework: Build a Hybrid automation framework including:
+   * Page Object Model (POM) pattern.
+   * Data-driven library creation using Apache POI, XML, or JSON.
+* Configuration: Create a Config property file for URL, Browser, Username, and Password.
+Slide 4: Workflow Implementation (Phase 3 - Scripting & Tools)
+Subtitle: For the given Project Idea, You are expected to follow below steps:
+* Test Scripts: Create scripts for the identified Smoke and Regression suites.
+* Annotations: Implement TestNG annotations.
+* Execution Logic: Enable group-based execution by leveraging TestNG.xml.
+* Rerun Utility: Implement an automatic rerun Java utility for programmatic generation of failed test suites.
+* Maven: Integrated with Maven to simplify the build process and dependencies.
+Slide 5: Workflow Implementation (Phase 4 - Reporting & Review)
+Subtitle: For the given Project Idea, You are expected to follow below steps:
+* Result Consolidation: Perform a dry run, consolidate results, and categorize failures. Fix failures and re-execute via TestNG.xml.
+* Reporting: Share the automation report with Coaches, Trainers, and BU Mentors.
+* CI/CD: Learn and implement Jenkins for executing the automation suite.
+* Reflection: Prepare a "Lessons Learnt" document (what went well, what could be better).
+* Final Demo: Understand the complete implementation to explain deliverables during the BU SME connect.
+* Evaluation: Project will be evaluated by Mentors.
+Slide 6: Automation Framework Components
+Mandatory Components
+* Java, Selenium, Multiple Browsers.
+* POM (Page Object Model), TestNG.
+* Data/Keyword Driven & Hybrid frameworks.
+* Utilities, Reports, Functional Libraries.
+* Clean Syntax, Error/Exception Handling.
+* Locator Selection Priority.
+* Selenium Grid, Customized Test Results, Jenkins.
+Good to have Components
+* Folder Structure, E2E Execution.
+* Naming Conventions, Code Comments.
+* Condition Flow, Loggers.
+* Screenshots, Web Page Synchronization, Wait Interface Usage.
+* Maven: Manages project dependencies via POM.xml.
+* Support Libraries: Repository for common activities and custom error handling.
+Slide 7: Closing Slide
+* Organization: Cognizant Academy
+* Message: Thank you
