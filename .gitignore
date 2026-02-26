@@ -5,6 +5,7 @@ target/
 .kotlin
 
 test-output/
+test-output/cucumber-reports/
 Images/
 
 ### IntelliJ IDEA ###
