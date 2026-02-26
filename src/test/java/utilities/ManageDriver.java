@@ -1,16 +1,10 @@
 package utilities;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.devtools.HasDevTools;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
-
-import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v142.network.Network;
-import java.util.Optional;
 
 import java.util.Scanner;
 
@@ -74,22 +68,4 @@ public class ManageDriver {
         driver.quit();
     }
 
-    public static void clearData(WebDriver driver) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.localStorage.clear();");
-        js.executeScript("window.sessionStorage.clear();");
-        driver.manage().deleteAllCookies();
-
-        DevTools devTools = ((HasDevTools) driver).getDevTools();
-        devTools.createSession();
-
-        // Enable Network domain to access cache/cookie methods
-        devTools.send(Network.enable(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty()));
-
-        devTools.send(Network.clearBrowserCache());
-        System.out.println("Browser cache cleared.");
-
-        devTools.send(Network.clearBrowserCookies());
-        System.out.println("Browser cookies cleared.");
-    }
 }
