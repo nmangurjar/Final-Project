@@ -17,7 +17,7 @@ public class DistrictAutomation {
     public static void main(String[] args) {
         DistrictAutomation obj = new DistrictAutomation();
         obj.driver = ManageDriver.getDriver();
-        System.out.println(((JavascriptExecutor) obj.driver).executeScript("return navigator.webdriver;"));
+        //System.out.println(((JavascriptExecutor) obj.driver).executeScript("return navigator.webdriver;"));
 
         obj.driver.get(Constants.URL);
         WebDriverWait loadPage = Constants.waitUntil(obj.driver, 20);

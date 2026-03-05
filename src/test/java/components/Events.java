@@ -24,9 +24,14 @@ public class Events {
 
     private static void saveEvents(WebDriver driver) {
         List<WebElement> events = Constants.waitUntil(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(EventComponentLocators.eventDiv)));
-        for(WebElement event: events) {
-            System.out.println(event.findElement(By.xpath("./parent::a")).getAttribute("href"));
-            System.out.println(event.getText());
+        for(int i = 0; i < events.size(); i++) {
+            if(events.get(i).getText().trim() == "") {
+                events.remove(i);
+                continue;
+            }
+            // Because those events doesnot have any details and are not even present in the events components for the weekend!
+            System.out.println(events.get(i).findElement(By.xpath("./parent::a")).getAttribute("href"));
+            System.out.println(events.get(i).getText());
         }
     }
 

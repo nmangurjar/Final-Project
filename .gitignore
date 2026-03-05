@@ -5,6 +5,7 @@ target/
 .kotlin
 Images/
 test-output/
+.playwright-mcp
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml
