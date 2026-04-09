@@ -3,7 +3,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 .kotlin
-
+Images/
+test-output/
+.playwright-mcp
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml

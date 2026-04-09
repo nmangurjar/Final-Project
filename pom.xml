@@ -9,8 +9,8 @@
     <version>1.0.0</version>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>25</maven.compiler.source>
+        <maven.compiler.target>25</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -18,7 +18,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.24.0</version>
+            <version>4.39.0</version>
         </dependency>
 
         <!-- TestNG -->
@@ -33,14 +33,14 @@
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>5.8.0</version>
+            <version>5.9.2</version>
         </dependency>
 
         <!-- Commons Lang (optional utilities) -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.14.0</version>
+            <version>3.19.0</version>
         </dependency>
     </dependencies>
 
